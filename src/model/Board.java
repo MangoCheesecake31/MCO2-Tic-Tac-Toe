@@ -2,8 +2,8 @@ package model;
 
 public class Board {
 	// // // Attributes
-	public final char[] VALID_SYMBOLS = {'O', 'X', ' '};
-	public final String[] VALID_RESULTS = {"ONGOING", "X-WIN", "O-WIN", "DRAW"};
+	public final static char[] VALID_SYMBOLS = {'O', 'X', ' '};
+	public final static String[] VALID_RESULTS = {"ONGOING", "X-WIN", "O-WIN", "DRAW"};
 
 	// States
 	private boolean x_turn;						// Is it Crosses' Turn?
@@ -15,15 +15,15 @@ public class Board {
 	private char[][] game_board = new char[3][3];
 
 	// Board Positions
-	private final int[] tile_A = {0, 0};
-	private final int[] tile_B = {1, 0};
-	private final int[] tile_C = {2, 0};		
-	private final int[] tile_D = {0, 1};		//	| A | B | C |
-	private final int[] tile_E = {1, 1};		//	| D | E | F |
-	private final int[] tile_F = {2, 1};		//	| G | H | I |
-	private final int[] tile_G = {0, 2};
-	private final int[] tile_H = {1, 2};
-	private final int[] tile_I = {2, 2};
+	private final static int[] tile_A = {0, 0};
+	private final static int[] tile_B = {1, 0};
+	private final static int[] tile_C = {2, 0};		
+	private final static int[] tile_D = {0, 1};		//	| A | B | C |
+	private final static int[] tile_E = {1, 1};		//	| D | E | F |
+	private final static int[] tile_F = {2, 1};		//	| G | H | I |
+	private final static int[] tile_G = {0, 2};
+	private final static int[] tile_H = {1, 2};
+	private final static int[] tile_I = {2, 2};
 
 
 

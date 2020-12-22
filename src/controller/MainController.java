@@ -22,7 +22,7 @@ public class MainController {
 		primaryStage.setTitle("TicTacToe Game");
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
-        changeScene(MAIN_VIEW);
+        changeScene(GAME_VIEW);
 	}
 
 
@@ -38,6 +38,7 @@ public class MainController {
 			default 	   -> file_name = "";
 		}
 
+		file_name = "TicTacToeView";				// TO REMOVE
 		// Load FXML File
 		loader.setLocation(getClass().getResource("/view/" + file_name + ".fxml"));
 
@@ -46,17 +47,23 @@ public class MainController {
 			primaryStage.setScene(new Scene(loader.load()));
 
 		} catch (IOException e) {
+			 System.out.println("OOF");
 			 e.printStackTrace();
 
 		}
 
 		// Set Controllers
-		Controller controller = load.getController();
+		Controller controller = loader.getController();
 		controller.setMainController(this);
 
 		// Display
 		primaryStage.show();
 	}
+
+
+
+
+
 
 	public void setAgentLevel(int level) {
 		agent_level = level;
