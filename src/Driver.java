@@ -1,25 +1,22 @@
 import model.*;
+import java.util.Scanner;
 
 public class Driver {
 	public static void main(String[] args) {
-		
+		Scanner sc = new Scanner(System.in);
+
 		// Sample
 		Board game = new Board();
 
-		game.enterMove('A');
 		game.printBoard();
-		System.out.println(game.getResult());
+		while (game.isInGame()) {
+			System.out.println(game.getResult());
+			game.enterMove(sc.next().toUpperCase().charAt(0));
+			game.printBoard();
+			System.out.println("-------------------------");
+		}
 
-		game.enterMove('D');
-		game.printBoard();
-		System.out.println(game.getResult());
-
-		game.enterMove('E');
-		game.printBoard();
-		System.out.println(game.getResult());
-
-		game.enterMove('G');
-		game.printBoard();
-		System.out.println(game.getResult());
+		System.out.println("The Winner is " + game.getResult());
+		System.out.println("-------------------------");
 	}
 }

@@ -9,6 +9,7 @@ public class Board {
 	private boolean x_turn;						// Is it Crosses' Turn?
 	private boolean in_game;					// Is the Game ongoing?
 	private String result;
+	private int move_count;
 
 	// Board 
 	private char[][] game_board = new char[3][3];
@@ -40,6 +41,11 @@ public class Board {
 				// Get Position Array
 				int[] location = getTilePosition(position);
 
+				// Check if specified tile already has input (Marked)		
+				if (game_board[location[0]][location[1]] != ' ') {	// Set to Null to trigger NullPointerException
+					location = null;
+				}
+
 				// Update Board with new Move
 				if (x_turn)	{				// X's Move
 					game_board[location[0]][location[1]] = 'X';
@@ -50,10 +56,28 @@ public class Board {
 					x_turn = true;
 				}
 
+				// Increment Counter
+				move_count++;
+
 				// Check Win/Draw/Lose
+				char winner = checkWin();
+				System.out.println(winner);
 
-				// checkWin();
+				// Update States
+				if (winner != '-' && winner != ' ') {				// Game is Finished
+					in_game = false;
+				}
 
+				// Update Result
+				if (move_count == 9) {								// DRAW
+					result = "DRAW";
+
+				} else {											// X or O WIN
+					switch (winner) {
+						case'X' -> result = "X-WIN";
+						case'O' -> result = "O-WIN";
+					}
+				}
 
 			} catch (NullPointerException e) {
 				System.out.println("Invalid tile position!");
@@ -88,14 +112,32 @@ public class Board {
 		return result;
 	}
 
-	private void checkWin() {
+	public boolean isInGame() {
+		return in_game;
+	}
+
+	private char checkWin() {
 		// Diagonals
+		if ((game_board[0][0] == game_board[1][1]) && (game_board[1][1] == game_board[2][2]) ){				// Right Diagonal
+			return game_board[1][1];
 
-		// Verticals
+		} else if ((game_board[0][2] == game_board[1][1]) && (game_board[1][1] == game_board[2][0])) {		// Left Diagonal
+			return game_board[1][1];
 
-		// Horizontals
+		}	
 
-		// Update States
+		// Verticals & Horizontals
+		for (int i = 0; i < 3; i++) {
+			if ((game_board[i][0] == game_board[i][1]) && (game_board[i][1] == game_board[i][2])) {			// Vertical
+				return game_board[i][1];
+
+			} else if ((game_board[0][i] == game_board[1][i]) && (game_board[1][i] == game_board[2][i])) {	// Horizontal
+				return game_board[1][i];
+
+			}	
+		}
+
+		return '-';																							// returns 'X', 'O', '-'
 	}
 
 	private int[] getTilePosition(char position) {
@@ -114,8 +156,8 @@ public class Board {
 	}
 
 	public void resetBoard() {
-		// Set Result
-		result = "ONGOING";
+		// Set Counter
+		move_count = 0;
 
 		// Set Board Tiles to " "
 		for (int i = 0; i < 3; i++) {
@@ -125,6 +167,7 @@ public class Board {
 		}
 
 		// Set States to Default
+		result = "ONGOING";
 		x_turn = true;					// Is it X's Turn?
 	 	in_game = true;					// Is the Game ongoing?
 	}
