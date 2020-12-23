@@ -64,21 +64,24 @@ public class Board {
 				System.out.println(winner);
 
 				// Update States
-				if (winner != '-' && winner != ' ') {				// Game is Finished
-					in_game = false;
-				}
+				switch (winner) {
+					case 'X' -> {
+							result = "X-WIN";
+							in_game = false;
+					}
 
-				// Update Result
-				if (move_count == 9) {								// DRAW
-					result = "DRAW";
+					case 'O' -> {
+							result = "O-WIN";
+							in_game = false;
+					}
 
-				} else {											// X or O WIN
-					switch (winner) {
-						case'X' -> result = "X-WIN";
-						case'O' -> result = "O-WIN";
+					case '-' -> {
+						if (move_count == 9) {
+							result = "DRAW";
+							in_game = false;
+						}
 					}
 				}
-
 			} catch (NullPointerException e) {
 				System.out.println("Invalid tile position!");
 
@@ -114,6 +117,10 @@ public class Board {
 
 	public boolean isInGame() {
 		return in_game;
+	}
+
+	public boolean isXTurn() {
+		return x_turn;
 	}
 
 	private char checkWin() {

@@ -5,10 +5,18 @@ import javafx.fxml.FXML;
 import javafx.event.Event;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
+import javafx.scene.image.*;
 
 
 public class GameController extends Controller {
-	@FXML
+	// // // Attributes
+    private Board game = new Board();
+
+    // Images
+    private final String o_url = "/resources/circle.png";
+    private final String x_url = "/resources/x.png";
+
+    @FXML
     private Button tileAButton;
 
     @FXML
@@ -36,47 +44,141 @@ public class GameController extends Controller {
     private Button tileIButton;
 
     @FXML
-    void onTileAButtonClick(Event event) {
+    private Button backButton;
+
+    @FXML
+    private Button clearButton;
+
+    @FXML
+    private Label endCardLabel;
+
+    // // // Events
+    @FXML
+    public void onBackButtonClick(Event event) {
+        mainController.changeScene(mainController.MENU_VIEW);
 
     }
 
     @FXML
-    void onTileBButtonClick(Event event) {
+    public void onClearButtonClick(Event event) {
+        mainController.changeScene(mainController.GAME_VIEW);
 
     }
 
     @FXML
-    void onTileCButtonClick(Event event) {
+    public void onTileAButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('A');
+            updateImage(tileAButton, game.isXTurn());
 
+        }
+        update();
     }
 
     @FXML
-    void onTileDButtonClick(Event event) {
+    public void onTileBButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('B');
+            updateImage(tileBButton, game.isXTurn());
 
+        }
+        update();
     }
 
     @FXML
-    void onTileEButtonClick(Event event) {
+    public void onTileCButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('C');
+            updateImage(tileCButton, game.isXTurn());
 
+        }
+        update();
     }
 
     @FXML
-    void onTileFButtonClick(Event event) {
+    public void onTileDButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('D');
+            updateImage(tileDButton, game.isXTurn());
 
+        }
+        update();
     }
 
     @FXML
-    void onTileGButtonClick(Event event) {
+    public void onTileEButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('E');
+            updateImage(tileEButton, game.isXTurn());
 
+        }
+        update();
     }
 
     @FXML
-    void onTileHButtonClick(Event event) {
+    public void onTileFButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('F');
+            updateImage(tileFButton, game.isXTurn());
 
+        }
+        update();
     }
 
     @FXML
-    void onTileIButtonClick(Event event) {
+    public void onTileGButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('G');
+            updateImage(tileGButton, game.isXTurn());
 
+        }
+        update();
+    }
+
+    @FXML
+    public void onTileHButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('H');
+            updateImage(tileHButton, game.isXTurn());
+
+        }
+        update();
+    }
+
+    @FXML
+    public void onTileIButtonClick(Event event) {
+        if (game.isInGame()) {
+            game.enterMove('I');
+            updateImage(tileIButton, game.isXTurn());
+
+        }
+        update();
+    }
+
+    // // // Methods
+    private void updateImage(Button tile, boolean xturn) {
+        // Update Tile Icons
+        if (!xturn) {
+            tile.setGraphic(new ImageView(new Image(x_url)));
+
+        } else {
+            tile.setGraphic(new ImageView(new Image(o_url)));
+
+        }
+
+        System.out.println("-------------------------");
+        game.printBoard();
+        System.out.println(game.getResult());
+    }
+
+    private void update() {
+        if (!game.isInGame()) {                              // Game is finished
+
+            switch (game.getResult()) {
+                case "X-WIN" -> endCardLabel.setText("X Wins!");
+                case "O-WIN" -> endCardLabel.setText("O Wins!");
+                case "DRAW" -> endCardLabel.setText("DRAW!");
+            }
+        }                             
     }
 }
