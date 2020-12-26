@@ -11,7 +11,7 @@ import javafx.scene.image.*;
 public class GameController extends Controller {
 	// // // Attributes
     private Board game = new Board();
-
+    
     // Images
     private final String o_url = "/resources/circle.png";
     private final String x_url = "/resources/x.png";
@@ -179,6 +179,6 @@ public class GameController extends Controller {
                 case "O-WIN" -> endCardLabel.setText("O Wins!");
                 case "DRAW" -> endCardLabel.setText("DRAW!");
             }
-        }                             
+        }                         
     }
 }

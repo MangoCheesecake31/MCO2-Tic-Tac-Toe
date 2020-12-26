@@ -8,10 +8,20 @@ public class Driver {
 		// Sample
 		Board game = new Board();
 
-		game.printBoard();
+		Player agent = new Player(game, 0);
+					
+		game.printBoard();	
 		while (game.isInGame()) {
 			System.out.println(game.getResult());
-			game.enterMove(sc.next().toUpperCase().charAt(0));
+			
+			if (game.isXTurn()) {									// Human
+				game.enterMove(sc.next().toUpperCase().charAt(0));
+
+			} else {												// Bot
+				game.enterMove(agent.getNextMove());
+
+			}
+			
 			game.printBoard();
 			System.out.println("-------------------------");
 		}

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Board {
 	// // // Attributes
 	public final static char[] VALID_SYMBOLS = {'O', 'X', ' '};
@@ -24,6 +26,11 @@ public class Board {
 	private final static int[] tile_G = {0, 2};
 	private final static int[] tile_H = {1, 2};
 	private final static int[] tile_I = {2, 2};
+
+	// Board Map (Reference for getting Valid Moves)
+	private final char[][] game_map = {{'A', 'D', 'G'},
+									   {'B', 'E', 'H'},
+									   {'C', 'F', 'I'}};
 
 
 
@@ -123,6 +130,23 @@ public class Board {
 		return x_turn;
 	}
 
+	public void resetBoard() {
+		// Set Counter
+		move_count = 0;
+
+		// Set Board Tiles to " "
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				game_board[i][j] = ' ';
+			}
+		}
+
+		// Set States to Default
+		result = "ONGOING";
+		x_turn = true;					// Is it X's Turn?
+	 	in_game = true;					// Is the Game ongoing?
+	}
+
 	private char checkWin() {
 		// Diagonals
 		if ((game_board[0][0] == game_board[1][1]) && (game_board[1][1] == game_board[2][2]) ){				// Right Diagonal
@@ -162,20 +186,18 @@ public class Board {
 		}
 	}
 
-	public void resetBoard() {
-		// Set Counter
-		move_count = 0;
+	protected ArrayList<Character> getValidMoves() {
+		ArrayList<Character> valid_moves = new ArrayList<>();
 
-		// Set Board Tiles to " "
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				game_board[i][j] = ' ';
+				
+				if (game_board[i][j] == ' ') {
+					valid_moves.add(game_map[i][j]);
+				}
 			}
 		}
 
-		// Set States to Default
-		result = "ONGOING";
-		x_turn = true;					// Is it X's Turn?
-	 	in_game = true;					// Is the Game ongoing?
+		return valid_moves;
 	}
 }
