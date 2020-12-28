@@ -9,6 +9,7 @@ public class MainController {
 	// // // Attributes
 	private Stage primaryStage;
 	protected int agent_level = 0;
+	protected boolean isFirstPlayer = true;
 
 	public final int MENU_VIEW = 1;
 	public final int GAME_VIEW = 2;
@@ -46,7 +47,7 @@ public class MainController {
 			primaryStage.setScene(new Scene(loader.load()));
 
 		} catch (IOException e) {
-			 System.out.println("OOF");
+			 System.out.println("Load Fail");
 			 e.printStackTrace();
 
 		}
@@ -61,5 +62,9 @@ public class MainController {
 
 	public void setAgentLevel(int level) {
 		agent_level = level;
+	}
+
+	public void setIsFirstPlayer(boolean condition) {
+		isFirstPlayer = condition;
 	}
 }

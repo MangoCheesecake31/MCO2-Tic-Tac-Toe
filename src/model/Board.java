@@ -8,7 +8,8 @@ public class Board {
 	public final static String[] VALID_RESULTS = {"ONGOING", "X-WIN", "O-WIN", "DRAW"};
 
 	// States
-	private boolean x_turn;						// Is it Crosses' Turn?
+	private boolean player_turn;				// Is it the Human Player's Turn?
+	private boolean x_turn;						// Is it the First Player's Turn?
 	private boolean in_game;					// Is the Game ongoing?
 	private String result;
 	private int move_count;
@@ -35,7 +36,9 @@ public class Board {
 
 
 	// // // Constructors
-	public Board() {
+	public Board(Boolean first_player) {
+		// True if Human Player is First
+		player_turn = first_player;
 		resetBoard();
 	}
 
@@ -43,22 +46,22 @@ public class Board {
 
 	// // // Methods
 	public void enterMove(char position) {
-		if (in_game) {							// If Game is ongoing, add new move
+		if (in_game) {																// If Game is ongoing, add player's new move
 			try {
 				// Get Position Array
 				int[] location = getTilePosition(position);
 
 				// Check if specified tile already has input (Marked)		
-				if (game_board[location[0]][location[1]] != ' ') {	// Set to Null to trigger NullPointerException
+				if (game_board[location[0]][location[1]] != ' ') {					// Set to Null to trigger NullPointerException
 					location = null;
 				}
 
 				// Update Board with new Move
-				if (x_turn)	{				// X's Move
+				if (x_turn)	{										// X's Move
 					game_board[location[0]][location[1]] = 'X';
 					x_turn = false;
 
-				} else {					// O's Move
+				} else {											// O's Move
 					game_board[location[0]][location[1]] = 'O';
 					x_turn = true;
 				}
@@ -89,6 +92,10 @@ public class Board {
 						}
 					}
 				}
+
+				// Player Turn
+				player_turn = !player_turn;
+
 			} catch (NullPointerException e) {
 				System.out.println("Invalid tile position!");
 
@@ -128,6 +135,10 @@ public class Board {
 
 	public boolean isXTurn() {
 		return x_turn;
+	}
+
+	public boolean isPlayerTurn() {
+		return player_turn;
 	}
 
 	public void resetBoard() {

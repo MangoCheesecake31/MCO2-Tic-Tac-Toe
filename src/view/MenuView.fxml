@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <children>
-      <ImageView fitHeight="473.0" fitWidth="806.0" pickOnBounds="true">
+      <ImageView fitHeight="624.0" fitWidth="806.0" layoutX="-3.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/chalkboard.jpg" />
          </image>
@@ -24,7 +24,7 @@
             <Blend />
          </effect>
       </Label>
-      <Label alignment="CENTER" layoutX="314.0" layoutY="198.0" prefHeight="97.0" prefWidth="472.0" text="Agent Level" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="171.0" layoutY="203.0" prefHeight="97.0" prefWidth="472.0" text="Agent Level" textFill="WHITE">
          <font>
             <Font name="Papyrus" size="40.0" />
          </font>
@@ -32,11 +32,16 @@
             <Blend />
          </effect>
       </Label>
-      <Button fx:id="startButton" layoutX="107.0" layoutY="198.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="205.0" prefWidth="203.0" style="-fx-background-color: TRANSPARENT;" text="Start" textFill="WHITE">
+      <Button layoutX="93.0" layoutY="391.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onXStartButtonClick" prefHeight="142.0" prefWidth="307.0" style="-fx-background-color: TRANSPARENT;" text="Player X" textFill="WHITE" fx:id="xStartButton">
          <font>
             <Font name="Papyrus" size="48.0" />
          </font>
       </Button>
-      <Slider fx:id="levelSlider" blockIncrement="1.0" layoutX="357.0" layoutY="343.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="14.0" prefWidth="406.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="levelSlider" blockIncrement="1.0" layoutX="90.0" layoutY="300.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="24.0" prefWidth="634.0" showTickMarks="true" snapToTicks="true" />
+      <Button fx:id="oStartButton" layoutX="407.0" layoutY="391.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onOStartButtonClick" prefHeight="142.0" prefWidth="307.0" style="-fx-background-color: TRANSPARENT;" text="Player O" textFill="WHITE">
+         <font>
+            <Font name="Papyrus" size="48.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

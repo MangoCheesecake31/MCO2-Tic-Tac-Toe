@@ -42,8 +42,4 @@ public class Player {
 		Random rd = new Random();
 		return valid_moves.get(rd.nextInt(valid_moves.size()));
 	}
-
-	public char level1Move() {
-
-	}
 }

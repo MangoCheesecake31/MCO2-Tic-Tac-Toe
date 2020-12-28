@@ -1,8 +1,7 @@
-package controller;
+    package controller;
 
 import model.*;
 import javafx.fxml.FXML;
-import javafx.event.Event;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
@@ -10,15 +9,19 @@ import javafx.scene.image.*;
 
 public class GameController extends Controller {
 	// // // Attributes
-    private Board game = new Board();
+    private Board game;
+    private Player agent;
+    private boolean started = false;
+
     
     // Images
     private final String o_url = "/resources/circle.png";
     private final String x_url = "/resources/x.png";
 
+    
     @FXML
     private Button tileAButton;
-
+    
     @FXML
     private Button tileBButton;
 
@@ -47,112 +50,174 @@ public class GameController extends Controller {
     private Button backButton;
 
     @FXML
+    private Button startButton;
+
+    @FXML
     private Button clearButton;
 
     @FXML
     private Label endCardLabel;
 
+
+
     // // // Events
     @FXML
-    public void onBackButtonClick(Event event) {
+    public void onStartButtonClick() {            
+        if (!started) {
+            // Setup 
+            game = new Board(mainController.isFirstPlayer);
+            agent = new Player(game, mainController.agent_level);
+
+            startButton.setText("");
+            update();
+        }     
+    }
+
+    @FXML
+    public void onBackButtonClick() {
         mainController.changeScene(mainController.MENU_VIEW);
 
     }
 
     @FXML
-    public void onClearButtonClick(Event event) {
+    public void onClearButtonClick() {
         mainController.changeScene(mainController.GAME_VIEW);
 
     }
 
     @FXML
-    public void onTileAButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('A');
-            updateImage(tileAButton, game.isXTurn());
+    public void onTileAButtonClick() {        
+        try {
+            if (game.isInGame()) {
+                game.enterMove('A');
+                updateImage(tileAButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileBButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('B');
-            updateImage(tileBButton, game.isXTurn());
+    public void onTileBButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('B');
+                updateImage(tileBButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileCButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('C');
-            updateImage(tileCButton, game.isXTurn());
+    public void onTileCButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('C');
+                updateImage(tileCButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileDButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('D');
-            updateImage(tileDButton, game.isXTurn());
+    public void onTileDButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('D');
+                updateImage(tileDButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileEButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('E');
-            updateImage(tileEButton, game.isXTurn());
+    public void onTileEButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('E');
+                updateImage(tileEButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileFButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('F');
-            updateImage(tileFButton, game.isXTurn());
+    public void onTileFButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('F');
+                updateImage(tileFButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileGButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('G');
-            updateImage(tileGButton, game.isXTurn());
+    public void onTileGButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('G');
+                updateImage(tileGButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileHButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('H');
-            updateImage(tileHButton, game.isXTurn());
+    public void onTileHButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('H');
+                updateImage(tileHButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     @FXML
-    public void onTileIButtonClick(Event event) {
-        if (game.isInGame()) {
-            game.enterMove('I');
-            updateImage(tileIButton, game.isXTurn());
+    public void onTileIButtonClick() {
+        try {
+            if (game.isInGame()) {
+                game.enterMove('I');
+                updateImage(tileIButton, game.isXTurn());
+            }
+
+             update();
+        } catch (NullPointerException e) {
+            System.out.println("Game has not Started!");
 
         }
-        update();
     }
 
     // // // Methods
@@ -179,6 +244,27 @@ public class GameController extends Controller {
                 case "O-WIN" -> endCardLabel.setText("O Wins!");
                 case "DRAW" -> endCardLabel.setText("DRAW!");
             }
-        }                         
+        } else {
+            enterAgentMove();
+
+        }                        
+    }
+
+    private void enterAgentMove() {
+        if (!game.isPlayerTurn()) {                         // If not the Human Player's Turn
+
+            switch (agent.getNextMove()) {                  // Get Agent Move and Press Tile Button
+                case 'A' -> onTileAButtonClick();
+                case 'B' -> onTileBButtonClick();
+                case 'C' -> onTileCButtonClick();
+                case 'D' -> onTileDButtonClick();
+                case 'E' -> onTileEButtonClick();
+                case 'F' -> onTileFButtonClick();
+                case 'G' -> onTileGButtonClick();
+                case 'H' -> onTileHButtonClick();
+                case 'I' -> onTileIButtonClick();
+                default  -> System.out.println("Something went very wrong!");
+            }
+        }                             
     }
 }

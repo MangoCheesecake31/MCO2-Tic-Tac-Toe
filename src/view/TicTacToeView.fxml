@@ -73,12 +73,17 @@
             <Font name="Papyrus" size="40.0" />
          </font>
       </Button>
-      <Label fx:id="endCardLabel" alignment="CENTER" layoutX="741.0" layoutY="98.0" prefHeight="320.0" prefWidth="220.0" text="~ ~ ~" textFill="WHITE">
+      <Label fx:id="endCardLabel" alignment="CENTER" layoutX="741.0" layoutY="26.0" prefHeight="181.0" prefWidth="220.0" text="~ ~ ~" textFill="WHITE">
          <font>
             <Font name="Papyrus" size="50.0" />
          </font>
       </Label>
       <Button fx:id="clearButton" layoutX="752.0" layoutY="417.0" mnemonicParsing="false" onAction="#onClearButtonClick" prefHeight="142.0" prefWidth="198.0" style="-fx-background-color: TRANSPARENT;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="Papyrus" size="40.0" />
+         </font>
+      </Button>
+      <Button fx:id="startButton" layoutX="763.0" layoutY="237.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="142.0" prefWidth="198.0" style="-fx-background-color: TRANSPARENT;" text="Start" textFill="WHITE">
          <font>
             <Font name="Papyrus" size="40.0" />
          </font>
