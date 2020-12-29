@@ -16,6 +16,7 @@ public class Board {
 
 	// Board 
 	private char[][] game_board = new char[3][3];
+	private ArrayList<Character> move_history;
 
 	// Board Positions
 	private final static int[] tile_A = {0, 0};
@@ -65,6 +66,9 @@ public class Board {
 					game_board[location[0]][location[1]] = 'O';
 					x_turn = true;
 				}
+
+				// List onto Move History
+				move_history.add(position);
 
 				// Increment Counter
 				move_count++;
@@ -141,6 +145,10 @@ public class Board {
 		return player_turn;
 	}
 
+	public ArrayList<Character> getMoveHistory() {
+		return move_history;
+	}
+
 	public void resetBoard() {
 		// Set Counter
 		move_count = 0;
@@ -152,10 +160,28 @@ public class Board {
 			}
 		}
 
+		// Set Move History
+		move_history = new ArrayList<>();
+
 		// Set States to Default
 		result = "ONGOING";
 		x_turn = true;					// Is it X's Turn?
 	 	in_game = true;					// Is the Game ongoing?
+	}
+
+	@Override
+	public String toString() {
+		
+		String code = "";
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				code += game_board[j][i];
+
+			}
+		}
+
+		return code;
 	}
 
 	private char checkWin() {
@@ -182,6 +208,21 @@ public class Board {
 		return '-';																							// returns 'X', 'O', '-'
 	}
 
+	protected ArrayList<Character> getValidMoves() {
+		ArrayList<Character> valid_moves = new ArrayList<>();
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				
+				if (game_board[i][j] == ' ') {
+					valid_moves.add(game_map[i][j]);
+				}
+			}
+		}
+
+		return valid_moves;
+	}
+
 	private int[] getTilePosition(char position) {
 		switch (position) {
 			case'A': return tile_A;
@@ -197,18 +238,4 @@ public class Board {
 		}
 	}
 
-	protected ArrayList<Character> getValidMoves() {
-		ArrayList<Character> valid_moves = new ArrayList<>();
-
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				
-				if (game_board[i][j] == ' ') {
-					valid_moves.add(game_map[i][j]);
-				}
-			}
-		}
-
-		return valid_moves;
-	}
 }
