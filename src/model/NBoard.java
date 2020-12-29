@@ -63,7 +63,7 @@ public class NBoard {
 				its_p_turn = !its_p_turn;
 
 				// Add Move to History
-				move_history.add(position);
+				move_history.push(position);
 
 				// Checking Winner & Updating States
 				checkWin();
@@ -81,7 +81,7 @@ public class NBoard {
 
 	public void undoMove() {
 		try {
-			game_board[getTilePosition(move_history.remove())] = ' ';
+			game_board[getTilePosition(move_history.pop())] = ' ';
 			
 			its_x_turn = !its_x_turn;
 			its_p_turn = !its_p_turn;
