@@ -8,13 +8,17 @@ public class Player {
 	// // // Attributes
 	private NBoard game;
 	private int level;
-
+	private CodeTable table;
 
 
 	// // // Constructors
 	public Player(NBoard game, int level) {
 		this.game = game;
 		this.level = level;
+
+		if (level == 1) {
+			table = new CodeTable();
+		}
 	}
 
 
@@ -23,7 +27,7 @@ public class Player {
 	public char getNextMove() {
 		switch (level) {
 			case 0: return level0Move();
-			// case 1: return level1Move();
+			case 1: return level1Move();
 			// case 2: return level2Move();
 		}
 
@@ -39,13 +43,8 @@ public class Player {
 		return valid_moves.get(rd.nextInt(valid_moves.size()));
 	}
 
-	private char level1Move() {
-		// TODO LIST
-		// Generate Table (hash?)
-		// Assign Optimal Moves per Board State
-		// output based on board code?
-		
-		return '-';
+	private char level1Move() {		
+		return table.getMove(game.toString());
 	}
 
 	private char level2Move() {

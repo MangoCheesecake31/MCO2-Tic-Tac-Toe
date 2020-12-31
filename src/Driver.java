@@ -1,12 +1,18 @@
 import model.*;
 import java.util.Scanner;
+import java.util.Hashtable;
 
 public class Driver {
 	public static void main(String[] args) {
+
+		// CodeTable table = new CodeTable();
+
+
+
 		Scanner sc = new Scanner(System.in);
 
 		NBoard game = new NBoard(true);
-		Player agent = new Player(game, 0);
+		Player agent = new Player(game, 1);
 
 		game.printBoard();	
 		while (game.getGameState() == NBoard.ONGOING) {
