@@ -215,6 +215,9 @@ public class NBoard {
 				if (move_history.size() == 9) {
 					current_game_state = DRAW;
 
+				} else {
+					current_game_state = ONGOING;
+
 				}
 			} 
 			default  -> current_game_state = ONGOING;

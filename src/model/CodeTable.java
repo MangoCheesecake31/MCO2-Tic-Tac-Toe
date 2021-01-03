@@ -41,9 +41,9 @@ public class CodeTable {
 		}
 	}
 
-	private char moveDecision(NBoard game) {
+	public char moveDecision(NBoard game) {
 		int heuristic_val;
-		int low_heuristic = 8;
+		int low_heuristic = 9;
 		char max_move = '-';
 
 		// Winning Move
@@ -52,14 +52,14 @@ public class CodeTable {
 
 		// Heuristic
 		for (char move: game.getValidMoves()) { 
+
 			if (game.getGameState() == NBoard.ONGOING) {
 				game.enterMove(move);
 
-				if (game.getGameState() != NBoard.ONGOING) {	// Meaning Won or Draw
+				if (game.getGameState() != NBoard.ONGOING) {							// Meaning Won or Draw
 					game.undoMove();
 					return move;
 				}
-
 
 				if (game.isXTurn()) {
 					heuristic_val = getHeuristics(game.toString(), "X_PLAYER");
@@ -74,7 +74,7 @@ public class CodeTable {
 
 				game.undoMove();
 			}
-		}
+		}	
 
 		return max_move;
 	}

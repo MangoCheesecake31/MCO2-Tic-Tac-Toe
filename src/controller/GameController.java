@@ -9,7 +9,7 @@ import javafx.scene.image.*;
 
 public class GameController extends Controller {
 	// // // Attributes
-    private Board game;
+    private NBoard game;
     private Player agent;
     private boolean started = false;
 
@@ -65,10 +65,11 @@ public class GameController extends Controller {
     public void onStartButtonClick() {            
         if (!started) {
             // Setup 
-            game = new Board(mainController.isFirstPlayer);
+            game = new NBoard(mainController.isFirstPlayer);
             agent = new Player(game, mainController.agent_level);
 
             startButton.setText("");
+            endCardLabel.setText(String.valueOf(mainController.agent_level));
             update();
         }     
     }
@@ -88,136 +89,181 @@ public class GameController extends Controller {
     @FXML
     public void onTileAButtonClick() {        
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('A');
                 updateImage(tileAButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileBButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('B');
                 updateImage(tileBButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileCButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('C');
                 updateImage(tileCButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileDButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('D');
                 updateImage(tileDButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileEButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('E');
                 updateImage(tileEButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileFButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('F');
                 updateImage(tileFButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileGButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('G');
                 updateImage(tileGButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileHButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('H');
                 updateImage(tileHButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     @FXML
     public void onTileIButtonClick() {
         try {
-            if (game.isInGame()) {
+            if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('I');
                 updateImage(tileIButton, game.isXTurn());
+
+            } else {
+                System.out.println("Error: Game has already reached a Conclusion!");
+
             }
 
-             update();
         } catch (NullPointerException e) {
-            System.out.println("Game has not Started!");
+            System.out.println("Error: Game has not Started!");
 
         }
+
+        update();
     }
 
     // // // Methods
@@ -233,37 +279,47 @@ public class GameController extends Controller {
 
         System.out.println("-------------------------");
         game.printBoard();
-        System.out.println(game.getResult());
+        System.out.println("State: " + game.getGameStateString());
+        System.out.println("X_TURN: " + game.isXTurn());
+        System.out.println("P_TURN: " + game.isPTurn());
     }
 
     private void update() {
-        if (!game.isInGame()) {                              // Game is finished
+        try {
+            if (game.getGameState() != NBoard.ONGOING) {                              // Game is finished
 
-            switch (game.getResult()) {
-                case "X-WIN" -> endCardLabel.setText("X Wins!");
-                case "O-WIN" -> endCardLabel.setText("O Wins!");
-                case "DRAW" -> endCardLabel.setText("DRAW!");
-            }
-        } else {
-            enterAgentMove();
+                switch (game.getGameState()) {
+                    case NBoard.X_WIN -> endCardLabel.setText("X Wins!");
+                    case NBoard.O_WIN -> endCardLabel.setText("O Wins!");
+                    case NBoard.DRAW  -> endCardLabel.setText("DRAW!");
+                }
+            } else {
+                enterAgentMove();
 
-        }                        
+            }                        
+        } catch (NullPointerException e) {
+
+        }
     }
 
     private void enterAgentMove() {
-        if (!game.isPlayerTurn()) {                         // If not the Human Player's Turn
+        if (!game.isPTurn()) {                                  // If not the Human Player's Turn
+            try {
+                switch (agent.getNextMove()) {                  // Get Agent Move and Press Tile Button
+                    case 'A' -> onTileAButtonClick();
+                    case 'B' -> onTileBButtonClick();
+                    case 'C' -> onTileCButtonClick();
+                    case 'D' -> onTileDButtonClick();
+                    case 'E' -> onTileEButtonClick();
+                    case 'F' -> onTileFButtonClick();
+                    case 'G' -> onTileGButtonClick();
+                    case 'H' -> onTileHButtonClick();
+                    case 'I' -> onTileIButtonClick();
+                    default  -> System.out.println("Something went very wrong!");
+                }
+            } catch (NullPointerException e) {
+                System.out.println("Hashtable Error!");
 
-            switch (agent.getNextMove()) {                  // Get Agent Move and Press Tile Button
-                case 'A' -> onTileAButtonClick();
-                case 'B' -> onTileBButtonClick();
-                case 'C' -> onTileCButtonClick();
-                case 'D' -> onTileDButtonClick();
-                case 'E' -> onTileEButtonClick();
-                case 'F' -> onTileFButtonClick();
-                case 'G' -> onTileGButtonClick();
-                case 'H' -> onTileHButtonClick();
-                case 'I' -> onTileIButtonClick();
-                default  -> System.out.println("Something went very wrong!");
             }
         }                             
     }

@@ -5,10 +5,9 @@ import java.util.Hashtable;
 public class Driver {
 	public static void main(String[] args) {
 
-		// CodeTable table = new CodeTable();
-
-
-
+		CodeTable table = new CodeTable();	
+	
+		/* Default Driver */
 		Scanner sc = new Scanner(System.in);
 
 		NBoard game = new NBoard(true);
