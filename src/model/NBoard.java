@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
-public class NBoard {
+public class NBoard implements Cloneable {
 	// // // Attributes
 
 	// Board Configuration
@@ -238,5 +238,10 @@ public class NBoard {
 		}
 
 		return -1;
+	}
+
+	public Object clone() throws CloneNotSupportedException {
+		NBoard copy_game = (NBoard) super.clone();
+		return copy_game;
 	}
 }

@@ -11,7 +11,7 @@ public class Driver {
 		Scanner sc = new Scanner(System.in);
 
 		NBoard game = new NBoard(true);
-		Player agent = new Player(game, 1);
+		Player agent = new Player(game, 2);
 
 		game.printBoard();	
 		while (game.getGameState() == NBoard.ONGOING) {
