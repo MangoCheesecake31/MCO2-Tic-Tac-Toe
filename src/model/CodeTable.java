@@ -45,14 +45,24 @@ public class CodeTable {
 		int heuristic_val;
 		int low_heuristic = 9;
 		char max_move = '-';
+		char opp;
 
-		// Winning Move
+		if (game.isXTurn()) {
+			opp = 'O';
+		} else {
+			opp = 'X';
+		}
 
-		// Enemy Winning Move
-
-		// Heuristic
 		for (char move: game.getValidMoves()) { 
+			// Enemy Winning
+			char[] code = game.toString().toCharArray();
+			code[NBoard.getTilePosition(move)] = opp;
 
+			if (NBoard.getWinner(code) == opp) {
+				return move;
+			}
+
+			// Player - Winning / Draw / Enemy Heuristics
 			if (game.getGameState() == NBoard.ONGOING) {
 				game.enterMove(move);
 

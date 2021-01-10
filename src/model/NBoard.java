@@ -171,6 +171,57 @@ public class NBoard implements Cloneable {
 		return code;
 	}
 
+	public static int getTilePosition(char position) {
+		switch (position) {
+			case 'A': return 0;
+			case 'B': return 1;
+			case 'C': return 2;
+			case 'D': return 3;
+			case 'E': return 4;
+			case 'F': return 5;
+			case 'G': return 6;
+			case 'H': return 7;
+			case 'I': return 8;
+		}
+
+		return -1;
+	}
+
+	public Object clone() throws CloneNotSupportedException {
+		NBoard copy_game = (NBoard) super.clone();
+		return copy_game;
+	}
+
+	public static char getWinner(char[] code) {
+		// Diagonals
+		if (code[0] == code[4] && code[4] == code[8]) {				// Left Diagonal		
+			return code[4];
+
+		} else if (code[2] == code[4] && code[4] == code[6]) {		// Right Diagonal
+			return code[4];
+
+		}
+
+
+		// Horizontals
+		for (int i = 0; i < 9; i += 3) {
+			if (code[i] == code[i + 1] && code[i + 1] == code[i + 2]) {
+				return code[i + 1];
+
+			}
+		}
+
+		// Verticals
+		for (int i = 0; i < 3; i++) {
+			if (code[i] == code[i + 3] && code[i + 3] == code[i + 6]) {
+				return code[i + 3];
+
+			}
+		}
+
+		return '-';
+	}
+
 	// // Private
 	private void checkWin() {				
 		// Diagonals
@@ -222,26 +273,5 @@ public class NBoard implements Cloneable {
 			} 
 			default  -> current_game_state = ONGOING;
 		}
-	}
-
-	private int getTilePosition(char position) {
-		switch (position) {
-			case 'A': return 0;
-			case 'B': return 1;
-			case 'C': return 2;
-			case 'D': return 3;
-			case 'E': return 4;
-			case 'F': return 5;
-			case 'G': return 6;
-			case 'H': return 7;
-			case 'I': return 8;
-		}
-
-		return -1;
-	}
-
-	public Object clone() throws CloneNotSupportedException {
-		NBoard copy_game = (NBoard) super.clone();
-		return copy_game;
 	}
 }
