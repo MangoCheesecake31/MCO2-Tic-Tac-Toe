@@ -194,18 +194,17 @@ public class NBoard implements Cloneable {
 
 	public static char getWinner(char[] code) {
 		// Diagonals
-		if (code[0] == code[4] && code[4] == code[8]) {				// Left Diagonal		
+		if ((code[0] == code[4] && code[4] == code[8]) && code[4] != ' ') {				// Left Diagonal		
 			return code[4];
 
-		} else if (code[2] == code[4] && code[4] == code[6]) {		// Right Diagonal
+		} else if ((code[2] == code[4] && code[4] == code[6]) && code[4] != ' ') {		// Right Diagonal
 			return code[4];
 
 		}
 
-
 		// Horizontals
 		for (int i = 0; i < 9; i += 3) {
-			if (code[i] == code[i + 1] && code[i + 1] == code[i + 2]) {
+			if ((code[i] == code[i + 1] && code[i + 1] == code[i + 2]) && code[i + 1] != ' ') {
 				return code[i + 1];
 
 			}
@@ -213,7 +212,7 @@ public class NBoard implements Cloneable {
 
 		// Verticals
 		for (int i = 0; i < 3; i++) {
-			if (code[i] == code[i + 3] && code[i + 3] == code[i + 6]) {
+			if ((code[i] == code[i + 3] && code[i + 3] == code[i + 6]) && code[i + 3] != ' ') {
 				return code[i + 3];
 
 			}

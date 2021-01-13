@@ -53,15 +53,9 @@ public class CodeTable {
 			opp = 'X';
 		}
 
+
+		// Player Winning / Draw Move
 		for (char move: game.getValidMoves()) { 
-			// Enemy Winning
-			char[] code = game.toString().toCharArray();
-			code[NBoard.getTilePosition(move)] = opp;
-
-			if (NBoard.getWinner(code) == opp) {
-				return move;
-			}
-
 			// Player - Winning / Draw / Enemy Heuristics
 			if (game.getGameState() == NBoard.ONGOING) {
 				game.enterMove(move);
@@ -85,6 +79,16 @@ public class CodeTable {
 				game.undoMove();
 			}
 		}	
+
+		// Enemy Winning Move
+		for (char move: game.getValidMoves()) { 
+			char[] code = game.toString().toCharArray();
+			code[NBoard.getTilePosition(move)] = opp;
+
+			if (NBoard.getWinner(code) == opp) {
+				return move;
+			}
+		}
 
 		return max_move;
 	}
