@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6e799c1-c5fb-401b-81f2-9f3b14e09eaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/NBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/NBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,20 +23,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Driver" />
+      <module name="MCO2-Tic-Tac-Toe" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Driver" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -49,8 +48,19 @@
       <option name="presentableId" value="Default" />
       <updated>1609686023251</updated>
       <workItem from="1609686024547" duration="7000" />
-      <workItem from="1609686132966" duration="1788000" />
+      <workItem from="1609686132966" duration="1961000" />
+      <workItem from="1610384077207" duration="709000" />
+      <workItem from="1610434243078" duration="25000" />
+      <workItem from="1610443271027" duration="974000" />
     </task>
+    <task id="LOCAL-00001" summary="Implemented level2Move(). NBoard is now Cloneable. level2Move is not entirely smart.">
+      <created>1609688059860</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609688059861</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -58,10 +68,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented level2Move(). NBoard is now Cloneable. level2Move is not entirely smart." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented level2Move(). NBoard is now Cloneable. level2Move is not entirely smart." />
   </component>
 </project>
