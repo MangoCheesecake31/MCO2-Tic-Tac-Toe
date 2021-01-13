@@ -89,6 +89,12 @@ public class GameController extends Controller {
     @FXML
     public void onTileAButtonClick() {        
         try {
+            if (game.toString().toCharArray()[0] != ' ') {
+                // Marked Tile
+                return;
+            }
+
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('A');
                 updateImage(tileAButton, game.isXTurn());
@@ -109,6 +115,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileBButtonClick() {
         try {
+            if (game.toString().toCharArray()[1] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('B');
                 updateImage(tileBButton, game.isXTurn());
@@ -129,6 +140,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileCButtonClick() {
         try {
+            if (game.toString().toCharArray()[2] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('C');
                 updateImage(tileCButton, game.isXTurn());
@@ -149,6 +165,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileDButtonClick() {
         try {
+            if (game.toString().toCharArray()[3] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('D');
                 updateImage(tileDButton, game.isXTurn());
@@ -169,6 +190,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileEButtonClick() {
         try {
+            if (game.toString().toCharArray()[4] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('E');
                 updateImage(tileEButton, game.isXTurn());
@@ -189,6 +215,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileFButtonClick() {
         try {
+            if (game.toString().toCharArray()[5] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('F');
                 updateImage(tileFButton, game.isXTurn());
@@ -209,6 +240,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileGButtonClick() {
         try {
+            if (game.toString().toCharArray()[6] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('G');
                 updateImage(tileGButton, game.isXTurn());
@@ -229,6 +265,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileHButtonClick() {
         try {
+            if (game.toString().toCharArray()[7] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('H');
                 updateImage(tileHButton, game.isXTurn());
@@ -249,6 +290,11 @@ public class GameController extends Controller {
     @FXML
     public void onTileIButtonClick() {
         try {
+            if (game.toString().toCharArray()[8] != ' ') {
+                // Marked Tile
+                return;
+            }
+
             if (game.getGameState() == NBoard.ONGOING) {
                 game.enterMove('I');
                 updateImage(tileIButton, game.isXTurn());
